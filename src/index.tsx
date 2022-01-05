@@ -1,12 +1,24 @@
 import { NativeModules, Platform } from 'react-native';
 
+interface RNHelpScoutIdentifyProps{
+  name: string;
+  email: string;
+}
+
+interface RNHelpScoutProps{
+  init(beaconID: string): void;
+  open(): void;
+  contactForm(): void;
+  identify({ name, email }: RNHelpScoutIdentifyProps): void;
+}
+
 const LINKING_ERROR =
   `The package 'rn-help-scout' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-const RnHelpScout = NativeModules.RnHelpScout
+const RnHelpScout: RNHelpScoutProps = NativeModules.RnHelpScout
   ? NativeModules.RnHelpScout
   : new Proxy(
       {},
@@ -17,6 +29,4 @@ const RnHelpScout = NativeModules.RnHelpScout
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RnHelpScout.multiply(a, b);
-}
+export default RnHelpScout;
