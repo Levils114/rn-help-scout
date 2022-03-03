@@ -1,19 +1,17 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, } from 'react-native';
 import Beacon from 'rn-help-scout';
 
 export default function App() {
   React.useEffect(() => {
-    Beacon.init('1e6f7c78-9104-4d11-9a67-53adee9cd1c3');
-    Beacon.identify({ name: 'Levi Siebra', email: 'levils114@gmail.com' });
+    Beacon.init('beaconID');
+    Beacon.identify({ name: 'Levi Siebra', email: 'john.cena@gmail.com' });
     Beacon.open();
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: 12</Text>
-    </View>
+    <View style={styles.container}/>
   );
 }
 

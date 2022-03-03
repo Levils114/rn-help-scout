@@ -1,6 +1,6 @@
 {
   "name": "rn-help-scout",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A package that will help people to use HelpScout in React Native projects",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
